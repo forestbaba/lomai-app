@@ -9,8 +9,10 @@ import {BASE_URL} from '../../helper/utilities'
 import axios from 'axios';
 import ImagePick from 'react-native-image-picker'
 import pick from '../../helper/picker';
-import {upload} from '../../helper/upload.js';
 import Toast from 'react-native-simple-toast';
+import { StackActions } from '@react-navigation/native';
+import { CommonActions } from '@react-navigation/native';
+
 
 // import request from 'request';
 
@@ -47,21 +49,26 @@ async componentDidMount (){
   }
 
   handleLogout =()=> {
-    this.props.navigation.navigate('Home')
+   // this.props.navigation.replace('logininfo')
+   // this.props.navigation.popToTop('logininfo')
+  //  this.props.navigation.navigate.rese
+  //   this.props.navigation.dispatch(
+  //     StackActions.re('login')
+  //   );
+
+
+this.props.navigation.dispatch(
+  CommonActions.reset({
+    index: 0,
+    routes: [
+      {
+        name: 'logininfo',
+      },
+    ],
+  })
+);
  }
 
- show() {
-  pick((source, data) => {
-    console.log('==============================oo==', source)
-
-      this.setState({ 
-          avatarSource: source, 
-          selected: true,
-          data: data })
-
-  }); 
-
-}
  upload=async()=> {
 
 
@@ -134,7 +141,25 @@ async componentDidMount (){
 
   pickMultipleImages =async () => {
 
-    ImagePick.showImagePicker ({maxWidth:500, maxHeight:500}, response => {
+    var options = {
+      title: 'Select Image',
+      customButtons: [
+        { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
+      ],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+
+    ImagePick.showImagePicker (options, response => {
+
+
+      this.setState({ 
+        avatarSource: response, 
+        selected: true,
+        data: response })
       if(response.didCancel){
         return;
       }
@@ -145,14 +170,9 @@ async componentDidMount (){
         name:response.fileName || response.uri.substr(response.uri.indexOf('/') + 1)
       }
 
-      console.log('@@@@@@@@@@@@@@: ', img)
 
       let nI = this.state.nImage.concat(img)
       this.setState({nImage: nI})
-      setTimeout(() => {
-        console.log('^^^^^^^',Object.keys(this.state.nImage))
-        console.log('^^^^1^^^',nI)
-      }, 1000);
 
       let payload = new FormData()
     payload.append('image', img)
@@ -195,7 +215,7 @@ renderAsset(image) {
                 style={styles.avatar}
                 source={{uri: this.state.avatarSource !== null ? this.state.avatarSource.uri : this.state.profilepic}}
               />
-              <Text onPress={this.show.bind(this)} style={styles.changeButton}>Change</Text>
+              <Text onPress={this.pickMultipleImages.bind(this)} style={styles.changeButton}>Change</Text>
              
              
             </View>
@@ -213,13 +233,6 @@ renderAsset(image) {
               </Text>
             </View>
             <View style={styles.row}>
-              
-              {/* <Button
-               style={styles.button}
-                onPress={() => this.props.navigation.navigate('contact')}
-                status="basic">
-                Notification Settings
-              </Button> */}
               <Button
               style={styles.button}
                 onPress={() => this.props.navigation.navigate('profileDetail')}
@@ -235,7 +248,7 @@ renderAsset(image) {
                  Upgrade User
                </Button>  ) : null}
               
-              <Button style={styles.btn} 
+              <Button style={styles.button} 
                   onPress={this.handleLogout}
                   status="basic">
                Logout
@@ -283,7 +296,7 @@ const styles = StyleSheet.create({
   button:{
     width:'100%',
     padding:5,
-    marginTop:5
+    marginTop:10
   },
   text:{
     fontWeight:'bold'

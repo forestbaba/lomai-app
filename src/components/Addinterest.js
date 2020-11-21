@@ -12,7 +12,6 @@ import axios from 'axios';
 import {BASE_URL} from '../helper/utilities';
 import AsyncStorage from '@react-native-community/async-storage';
 import pick from '../helper/picker';
-import {upload2} from '../helper/upload';
 import querystring from "query-string"
 
 

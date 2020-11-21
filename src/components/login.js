@@ -6,7 +6,7 @@ import {
   Button,
   Input,
 } from '@ui-kitten/components';
-import {StyleSheet, View, ActivityIndicator, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, ActivityIndicator, TouchableOpacity, Image} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 import * as eva from '@eva-design/eva';
 import axios from 'axios';
@@ -61,12 +61,17 @@ class Login extends React.Component {
         <Layout style={styles.layout}>
           <React.Fragment>
             <View style={styles.row}>
-              <Text style={styles.text} category="h2">
+              <Image
+              source={require('../assets/clubhop.png')}
+              cover="maintain"
+              
+              style={styles.logo}/>
+              {/* <Text style={styles.text} category="h2">
                 LOGIN
-              </Text>
+              </Text> */}
             </View>
             <View style={styles.username}>
-              <Input label="User Name" placeholder="Your Username"
+              <Input label="Email" placeholder="Your Email"
               onChangeText={email=>this.setState({email})} />
             </View>
             <View style={styles.password}>
@@ -168,6 +173,12 @@ const styles = StyleSheet.create({
     paddingLeft:10,
     paddingRight:10,
     backgroundColor:'transparent'
+  },
+  logo:{
+    width:150,
+    height:80
+    // width:"40%",
+    // height:"30%",
   }
 });
 

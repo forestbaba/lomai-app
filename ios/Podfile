@@ -9,8 +9,6 @@ target 'benApp' do
   use_react_native!(:path => config["reactNativePath"])
 
 
-  pod 'react-native-fetch-blob', :path => '../node_modules/react-native-fetch-blob'
-
   target 'benAppTests' do
     inherit! :complete
     # Pods for testing

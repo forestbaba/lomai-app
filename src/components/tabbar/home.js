@@ -44,7 +44,6 @@ export const Profile = (props) => {
         setloadings(false)
 
     }, 1500);
-    
 
   },[])
 

@@ -88,6 +88,7 @@ class SignUpStep extends React.Component {
             </View>
             <View style={styles.username}>
               <Input label="Password" placeholder="Password" 
+              secureTextEntry
                 onChangeText={password => this.setState({password})}/>
             </View>
             <Layout style={styles.buttonLogin} level="3">

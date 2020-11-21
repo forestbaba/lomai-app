@@ -37,7 +37,7 @@ class Welcome extends React.Component {
               <Button
                 onPress={() => this.props.navigation.replace('login')}
                 // onPress={() => this.props.navigation.navigate('logininfo')}
-                status="success">
+                style={styles.butt}>
                 LOGIN
               </Button>
             </View>
@@ -45,7 +45,7 @@ class Welcome extends React.Component {
               <Button
                 onPress={() => this.props.navigation.navigate('signupstep')}
                 // onPress={() => this.props.navigation.navigate('signup')}
-                status="success">
+                style={styles.butt}>
                 SIGN UP
               </Button>
             </View>
@@ -80,6 +80,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
+  butt:{
+    backgroundColor:"#80BCFF",
+    borderWidth:0
+  }
 });
 
 export default Welcome;

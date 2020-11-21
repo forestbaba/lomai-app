@@ -236,8 +236,6 @@ PODS:
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
   - React-jsinspector (0.63.3)
-  - react-native-fetch-blob (0.10.6):
-    - React-Core
   - react-native-image-picker (0.14.3):
     - React
   - react-native-safe-area-context (3.1.8):
@@ -373,7 +371,6 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-fetch-blob (from `../node_modules/react-native-fetch-blob`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-simple-toast (from `../node_modules/react-native-simple-toast`)
@@ -446,8 +443,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
-  react-native-fetch-blob:
-    :path: "../node_modules/react-native-fetch-blob"
   react-native-image-picker:
     :path: "../node_modules/react-native-image-picker"
   react-native-safe-area-context:
@@ -522,7 +517,6 @@ SPEC CHECKSUMS:
   React-jsi: df07aa95b39c5be3e41199921509bfa929ed2b9d
   React-jsiexecutor: b56c03e61c0dd5f5801255f2160a815f4a53d451
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
-  react-native-fetch-blob: 0cbdf9764c75d9438c162427395f4bc35a857d5a
   react-native-image-picker: 3693786b3d5958c8f71deed66ec068b323565e0d
   react-native-safe-area-context: 01158a92c300895d79dee447e980672dc3fb85a6
   react-native-simple-toast: b986e6c1befdc211af3df1bae293278a44e32990

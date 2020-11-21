@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import {ApplicationProvider} from '@ui-kitten/components';
-import {StyleSheet, View, ScrollView, Image} from 'react-native';
+import {StyleSheet, View, ScrollView, Image, Alert} from 'react-native';
 import * as eva from '@eva-design/eva';
 import {Input, Layout, Button, Avatar, Card, Text} from '@ui-kitten/components';
 import SearchBar from 'react-native-search-bar';
@@ -66,20 +66,37 @@ export const Directory = ({navigation}) => {
     })
   }
   const handleDelete = async(user,post)=>{
+
+    Alert.alert(
+      "Delete Post",
+      "Are you sure you want to delete this post ?",
+      [
+        
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => {
+          axios.post(`${BASE_URL}post/delete`,{
+            postId:post,
+            user:user
+          })
+          .then(response =>{
+            if(response.data.error === false){
+              loadAllPost()
+              alert('Post deleted')
+            }else{
+              alert('Something went wrong')
+            }
+          })
+        } }
+      ],
+      { cancelable: false }
+    );
    
 
-    axios.post(`${BASE_URL}post/delete`,{
-      postId:post,
-      user:user
-    })
-    .then(response =>{
-      if(response.data.error === false){
-        loadAllPost()
-        alert('Post deleted')
-      }else{
-        alert('Something went wrong')
-      }
-    })
+    
   }
   const Header = (props) => (
     <View {...props}>

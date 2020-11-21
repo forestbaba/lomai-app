@@ -1,13 +1,15 @@
 var ImagePicker = require('react-native-image-picker');
 
 var options = {
-  title: 'Select Avatar',
+  title: 'Select Image',
+  customButtons: [
+    { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
+  ],
   storageOptions: {
     skipBackup: true,
-    path: 'images'
-  }
+    path: 'images',
+  },
 };
-
 let pick = (cb) => {
   ImagePicker.showImagePicker(options, (response) => {
     if (response.didCancel) {
